@@ -1,0 +1,25 @@
+order_id,order_date,customer_name,customer_email,country,product,amount
+ORD-001,2024-03-15,Alice Chen,alice.chen@example.com,CN,Laptop,899.99
+ORD-002,2024-03-16,Bob Wang,bob.wang@example.com,US,Mouse,24.5
+ORD-003,2024-03-17,Carol Li,carol.li@example.com,CN,Keyboard,59.9
+ORD-004,2024-03-18,David Liu,david.liu@example.com,US,Monitor,199.0
+ORD-005,2024-03-19,Eva Zhang,eva.zhang@example.com,CN,Webcam,45.3
+ORD-006,2024-03-20,Frank Sun,frank.sun@example.com,US,Headset,89.99
+ORD-007,2024-03-21,Grace Wu,grace.wu@example.com,CN,USB Hub,29.9
+ORD-008,2024-03-22,Henry Zhao,henry.zhao@example.com,US,SSD 1TB,129.0
+ORD-009,2024-03-23,Ivy Huang,ivy.huang@example.com,CN,GPU,499.99
+ORD-010,2024-03-24,Jack Lin,jack.lin@example.com,US,Router,79.5
+ORD-011,2024-03-25,Kate Ma,,CN,Cable,12.99
+ORD-012,2024-03-26,Leo Xu,N/A,US,Stand,19.99
+ORD-013,2024-03-27,Mia Zhou,mia.zhou@example.com,CN,,unknown
+ORD-001,2024-03-15,Alice Chen,alice.chen@example.com,CN,Laptop,899.99
+ORD-002,2024-03-16,Bob Wang,bob.wang@example.com,US,Mouse,24.5
+ORD-014,03/28/2024,Nick Ye,nick.ye@example.com,US,Camera,320.0
+ORD-015,29.03.2024,Olivia Tan,olivia.tan@example.com,CN,Mic,55.0
+ORD-016,2024-03-30,Paul He,paul.he@example.com,US,Chair,"$1,234.56"
+ORD-017,2024-03-31,Queen Yu,queen.yu@example.com,CN,Desk,"1.234,56"
+ord-018,2024-04-01,  rick fan  ,RICK.FAN@EXAMPLE.COM,cn,Lamp,39.99
+ORD-019,2024-04-02,Sam Gao,sam.gao@example.com,US,speaker,69.0
+ORD-020,2024-04-03,Tina Luo,tina.luo@example.com,CN,Phone,-599.99
+ORD-021,2024-04-04,Uma Shi,uma.shi@example.com,US,Tablet,9999999.99
+ORD-022,2024-04-05,victor.kim@example.com,Victor Kim,US,Drone,150.0

@@ -1,0 +1,18 @@
+输入行数: 24
+去重后行数: 22 (删除 2 行)
+字段错位修复: 1 行
+邮箱缺失: 2 行 (填充占位)
+异常金额过滤: 3 行 (负数/离谱值)
+输出行数: 19
+输出列数: 7
+
+=== 清洗后样例 ===
+order_id order_date customer_name         customer_email country  product  amount
+ ORD-001 2024-03-15    Alice Chen alice.chen@example.com      CN   laptop  899.99
+ ORD-002 2024-03-16      Bob Wang   bob.wang@example.com      US    mouse    24.5
+ ORD-003 2024-03-17      Carol Li   carol.li@example.com      CN keyboard    59.9
+ ORD-004 2024-03-18     David Liu  david.liu@example.com      US  monitor   199.0
+ ORD-005 2024-03-19     Eva Zhang  eva.zhang@example.com      CN   webcam    45.3
+ ORD-006 2024-03-20     Frank Sun  frank.sun@example.com      US  headset   89.99
+ ORD-007 2024-03-21      Grace Wu   grace.wu@example.com      CN  usb hub    29.9
+ ORD-008 2024-03-22    Henry Zhao henry.zhao@example.com      US  ssd 1tb   129.0
