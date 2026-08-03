@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# 数据输出（保留 output/ 目录结构，不追踪生成文件）
+# 如需保留样例数据，取消下一行注释
+# !web-scraper-demo/output/books.csv
+
+# 其他
+.DS_Store
+*.log
