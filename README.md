@@ -13,6 +13,7 @@ Python developer specialized in web scraping, data collection, data cleaning, an
 | [ffmpeg-batch-demo](ffmpeg-batch-demo/) | Batch video processing: compress, extract frames, extract audio | Python · FFmpeg | ✅ |
 | [price-monitor-demo](price-monitor-demo/) | Scheduled price monitoring with history tracking & change detection (new / removed / risen / dropped) | Python · requests · BeautifulSoup · CSV | ✅ |
 | [price-monitor-demo](price-monitor-demo/) | Same demo, now with **self-contained HTML report** + optional **Google Sheets delivery** (production mode) | Python · gspread · google-auth | ✅ |
+| [pdf-batch-demo](pdf-batch-demo/) | Batch PDF processing: extract invoice fields (number/date/company/total) → Excel summary + auto-renamed archive | Python · pdfplumber · openpyxl · reportlab | ✅ |
 
 ## Skills
 
