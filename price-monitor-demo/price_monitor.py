@@ -142,12 +142,66 @@ def notify(report: str) -> None:
     pass
 
 
+def write_html_report(books: list[dict], report: str, out_path: str = "report.html") -> str:
+    """Write a self-contained HTML report the client can open in any browser."""
+    rows = []
+    for b in books[:100]:
+        rows.append(
+            f"<tr><td>{b['title']}</td><td>{b['price']}</td>"
+            f"<td><a href='{b['url']}'>link</a></td></tr>"
+        )
+    html = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Price Monitor Report</title>
+<style>
+body{{font-family:Arial,sans-serif;background:#f5f7fa;margin:40px;color:#1f3864}}
+pre{{background:#fff;border:1px solid #d8e0ee;border-radius:8px;padding:16px;white-space:pre-wrap}}
+table{{border-collapse:collapse;width:100%;background:#fff;border:1px solid #d8e0ee}}
+th,td{{border:1px solid #d8e0ee;padding:8px 12px;text-align:left;font-size:14px}}
+th{{background:#eef4fc}}
+h1{{font-size:22px}}
+</style></head><body>
+<h1>Price Monitor Report</h1>
+<pre>{report}</pre>
+<h2>Latest snapshot</h2>
+<table><tr><th>Title</th><th>Price</th><th>Link</th></tr>{''.join(rows)}</table>
+</body></html>"""
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    return out_path
+
+
+def write_to_sheets(books: list[dict], credentials_file: str, sheet_name: str) -> None:
+    """Write the latest snapshot into a Google Sheet (production mode).
+
+    Requires: pip install gspread google-auth
+    credentials_file: path to service-account JSON (created in Google Cloud Console)
+    sheet_name: name of the target sheet (share it with the service account email)
+    """
+    import gspread
+    from google.oauth2 import service_account
+
+    scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+    creds = service_account.Credentials.from_service_account_file(credentials_file, scopes=scopes)
+    client = gspread.authorize(creds)
+    sheet = client.open(sheet_name).sheet1
+    rows = [[b["title"], b["price"], b["url"]] for b in books]
+    sheet.clear()
+    sheet.append_rows([[ "title", "price", "url" ]] + rows)
+    print(f"Written {len(rows)} rows to Google Sheets: {sheet_name}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("run", help="run a monitoring pass")
     ap.add_argument("--limit", type=int, default=50, help="max products to scrape")
     ap.add_argument("--simulate-change", action="store_true",
                     help="test mode: simulate random price moves to demo change detection")
+    ap.add_argument("--html", action="store_true",
+                    help="also write a self-contained HTML report")
+    ap.add_argument("--sheet-credentials", type=str, default=None,
+                    help="path to Google service-account JSON for Sheets delivery")
+    ap.add_argument("--sheet-name", type=str, default="PriceMonitor",
+                    help="Google Sheet name to write to (with --sheet-credentials)")
     args = ap.parse_args()
 
     try:
@@ -161,6 +215,11 @@ def main() -> int:
     print(report)
     append_history(books)
     notify(report)
+    if args.html:
+        out = write_html_report(books, report)
+        print(f"HTML report written -> {out}")
+    if args.sheet_credentials:
+        write_to_sheets(books, args.sheet_credentials, args.sheet_name)
     print(f"\nHistory appended -> {HISTORY_FILE}")
     return 0
 
